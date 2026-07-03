@@ -9,7 +9,7 @@
   :root{
     --bg:#f4f5f8; --ink:#1c2130; --muted:#5c6372; --card:#fff;
     --accent:#4353b8; --accent-soft:#e9ecfa; --line:#dfe2ea;
-    --navy:#2b3a55; --band:#e8ebf7; --chipline:#d8dce8;
+    --navy:#2b3a55; --band:#e8ebf7; --chipline:#d8dce8; --bad:#d64541; --good:#2c7a4b;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -30,62 +30,66 @@
 
   /* ---- before/after layout ---- */
   .ba{display:flex;gap:34px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
-  .ba-col{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .ba-col{display:flex;flex-direction:column;align-items:center;gap:10px;width:354px}
   .ba-tag{font-size:12px;font-weight:800;letter-spacing:.1em;border-radius:999px;padding:4px 16px}
   .ba-tag.before{background:#f1f2f5;color:#8a90a0;border:1px solid #dfe2ea}
   .ba-tag.after{background:var(--accent);color:#fff}
   .ba-arrow{align-self:center;font-size:26px;color:var(--accent);font-weight:800}
   .cap{font-size:12.5px;color:var(--muted);max-width:340px;text-align:center;line-height:1.5}
   .cap b{color:var(--ink)}
+  /* 코멘트 — 화면 밖 */
+  .callouts{width:340px;display:flex;flex-direction:column;gap:5px}
+  .co{font-size:12.5px;line-height:1.5;display:flex;gap:7px;align-items:flex-start}
+  .co .mk{font-weight:900;flex-shrink:0}
+  .co.bad .mk{color:var(--bad)} .co.good .mk{color:var(--good)}
+  .co b{color:var(--ink)}
 
-  /* ================= phone (실제 앱 스타일) ================= */
-  .phone{width:340px;background:#fff;border:7px solid #23262f;border-radius:34px;overflow:hidden;
+  /* ================= phone (실제 앱 비율 1440:3120 ≈ 340:720) ================= */
+  .phone{width:340px;height:720px;background:#fff;border:7px solid #23262f;border-radius:34px;overflow:hidden;
     box-shadow:0 12px 34px rgba(20,25,50,.18);color:#111;flex-shrink:0;position:relative;
     display:flex;flex-direction:column}
   .ph-status{display:flex;justify-content:space-between;font-size:11px;color:#333;
-    padding:9px 18px 3px;font-weight:700}
-  .ph-crumb{display:flex;align-items:center;gap:9px;padding:8px 14px 2px;font-weight:800;font-size:19px;letter-spacing:-.3px}
-  .ph-crumb .home{width:34px;height:34px;border-radius:50%;background:#f1f2f6;display:grid;
+    padding:9px 18px 3px;font-weight:700;flex-shrink:0}
+  .ph-crumb{display:flex;align-items:center;gap:9px;padding:8px 14px 2px;font-weight:800;font-size:18px;letter-spacing:-.3px;flex-shrink:0}
+  .ph-crumb .home{width:33px;height:33px;border-radius:50%;background:#f1f2f6;display:grid;
     place-items:center;color:#444}
   .ph-crumb .gt{color:#c4c8d4;font-weight:400;font-size:15px}
-  .ph-glob{display:flex;justify-content:space-between;align-items:center;padding:6px 14px 10px}
-  .g-globe{width:40px;height:40px;border-radius:50%;background:#f1f2f6;display:grid;place-items:center;color:#666}
-  .g-mute{width:40px;height:40px;border-radius:50%;background:#fbe3e6;display:grid;place-items:center;color:#d9534f}
-  .ph-band{display:flex;background:var(--band);font-size:14.5px;font-weight:700;color:#2f3550}
-  .ph-band div{flex:1;text-align:center;padding:11px 0;display:flex;align-items:center;justify-content:center;gap:7px}
+  .ph-glob{display:flex;justify-content:space-between;align-items:center;padding:5px 14px 8px;flex-shrink:0}
+  .g-globe{width:38px;height:38px;border-radius:50%;background:#f1f2f6;display:grid;place-items:center;color:#666}
+  .g-mute{width:38px;height:38px;border-radius:50%;background:#fbe3e6;display:grid;place-items:center;color:#d9534f}
+  .ph-band{display:flex;background:var(--band);font-size:14px;font-weight:700;color:#2f3550;flex-shrink:0}
+  .ph-band div{flex:1;text-align:center;padding:10px 0;display:flex;align-items:center;justify-content:center;gap:7px}
   .ph-band div:first-child{border-right:1px solid #d2d7ea}
-  .chiprow{display:flex;gap:7px;padding:11px 10px;align-items:center;position:relative;border-bottom:1px solid #eceef4}
-  .chip{border:1px solid var(--chipline);border-radius:999px;padding:10px 17px;font-size:14.5px;
+  .chiprow{display:flex;gap:7px;padding:10px 10px;align-items:center;position:relative;border-bottom:1px solid #eceef4;flex-shrink:0}
+  .chip{border:1px solid var(--chipline);border-radius:999px;padding:9px 15px;font-size:14px;
     font-weight:700;background:#fff;white-space:nowrap;color:#222;display:flex;align-items:center;gap:6px}
   .chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
   .chip.allbtn{background:var(--navy);border-color:var(--navy);color:#fff;margin-left:auto}
   .chip.tappable{cursor:pointer}
-  .edge{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;
+  .edge{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;
     background:#fff;box-shadow:0 1px 7px rgba(0,0,0,.2);display:grid;place-items:center;color:#555;z-index:2}
   .edge.l{left:56px}.edge.r{right:8px}
   .fade-r{position:absolute;right:0;top:0;bottom:0;width:34px;
     background:linear-gradient(to right,rgba(255,255,255,0),#fff);pointer-events:none}
-  .chat{padding:14px;display:flex;flex-direction:column;gap:8px;min-height:150px}
+  .chat{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;overflow-y:auto}
   .bubble{background:#f2f3f7;border-radius:16px;padding:12px 14px;font-size:13.5px;line-height:1.65;
     max-width:88%;color:#333;align-self:flex-start}
   .bubble.user{background:var(--navy);color:#fff;align-self:flex-end;max-width:72%}
   .stamp{font-size:10.5px;color:#b0b4c0;margin:0 4px}
   .ph-input{display:flex;align-items:center;gap:10px;margin:6px 12px 16px;border:1px solid #e4e6ee;
-    border-radius:999px;padding:8px 12px;font-size:14px;color:#b7bbc7}
+    border-radius:999px;padding:8px 12px;font-size:14px;color:#b7bbc7;flex-shrink:0}
   .ph-input .mic{width:38px;height:38px;border-radius:50%;background:#1b2334;color:#fff;display:grid;
     place-items:center;flex-shrink:0}
   .ph-input .send{margin-left:auto;color:#a8b0c8;display:grid;place-items:center}
-  .tabbar{display:flex;border-top:1px solid #eceef4;padding:8px 6px 13px;background:#fff;margin-top:auto}
+  .tabbar{display:flex;border-top:1px solid #eceef4;padding:8px 6px 13px;background:#fff;margin-top:auto;flex-shrink:0}
   .tab{flex:1;text-align:center;font-size:11.5px;color:#222;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px}
   .tab .ti{display:grid;place-items:center;height:30px;width:52px;border-radius:14px;color:#333}
   .tab.on .ti{background:var(--accent-soft);color:#333}
-  .flag{position:absolute;background:#e2554d;color:#fff;font-size:11px;font-weight:700;
-    padding:5px 10px;border-radius:8px;z-index:9;box-shadow:0 3px 8px rgba(0,0,0,.25);line-height:1.35}
-  .flag.good{background:#2c7a4b}
   .imgblock{width:100%;display:block}
-  .nowlogo{height:23px;width:auto;align-self:flex-start;flex-shrink:0;margin:12px 16px 6px;display:block;object-fit:contain}
-  .weather{background:#e6ecfb;font-size:14px;font-weight:700;color:#333;padding:9px 16px;display:flex;gap:8px;align-items:center}
+  .nowlogo{height:22px;width:auto;align-self:flex-start;flex-shrink:0;margin:12px 16px 6px;display:block;object-fit:contain}
+  .weather{background:#e6ecfb;font-size:14px;font-weight:700;color:#333;padding:9px 16px;display:flex;gap:8px;align-items:center;flex-shrink:0}
   .weather u{text-decoration-thickness:1px;text-underline-offset:3px}
+  .flexsp{flex:1}
 
   /* ---- fullscreen category page (S1 after) ---- */
   .catpage{position:absolute;inset:0;background:#fff;z-index:12;transform:translateX(103%);
@@ -98,42 +102,52 @@
   .cat-scroll{overflow-y:auto;padding:4px 16px 20px;flex:1}
   .sh-sec{font-size:11px;font-weight:800;color:#98a0b3;letter-spacing:.08em;margin:12px 4px 4px}
   .lrow{display:flex;align-items:center;gap:11px;padding:12px 6px;border-bottom:1px solid #f0f1f6;cursor:pointer}
-  .lrow .ico{width:32px;height:32px;border-radius:10px;background:#f1f3fa;display:grid;place-items:center;color:#4353b8}
+  .lrow .ico{width:32px;height:32px;border-radius:10px;background:#f1f3fa;display:grid;place-items:center;color:#4353b8;flex-shrink:0}
   .lrow .nm{font-size:14.5px;font-weight:700;color:#222}
   .lrow .desc{font-size:11.5px;color:#a8adbd;margin-left:auto;white-space:nowrap}
   .lrow .chev{color:#ccd1de;margin-left:7px;display:grid;place-items:center}
+  /* 칩 줄 확대 예시 (폰 아님) */
+  .strip{width:340px;margin:0 auto;border:1.5px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+  .strip .lbl{font-size:11px;font-weight:700;color:#98a0b3;padding:7px 12px 0}
 
-  /* ---- gallery after (S2) ---- */
-  .seg{display:flex;gap:6px;padding:10px 12px;overflow-x:auto;scrollbar-width:none}
-  .seg::-webkit-scrollbar{display:none}
-  .segbtn{border:1px solid var(--chipline);border-radius:10px;padding:9px 14px;font-size:13.5px;
-    font-weight:700;background:#fff;white-space:nowrap;cursor:pointer;color:#333}
-  .segbtn.on{background:var(--navy);border-color:var(--navy);color:#fff}
-  .floor{position:relative;margin:6px 12px;background:#f7f8fc;border:1px solid #dfe3f0;border-radius:12px;height:210px}
-  .room{position:absolute;border:2.5px solid #7c8fe0;background:#eef1fc;border-radius:4px}
-  .roomlabel{position:absolute;font-size:10.5px;color:#8a93b8;font-weight:700}
-  .pin{position:absolute;width:27px;height:27px;border-radius:50%;background:#fff;border:2.5px solid var(--navy);
-    color:var(--navy);font-size:12px;font-weight:800;display:grid;place-items:center;cursor:pointer;
-    box-shadow:0 2px 6px rgba(20,25,50,.2);transition:transform .12s}
-  .pin.on{background:var(--navy);color:#fff;transform:scale(1.25)}
-  .artcard{margin:10px 12px 14px;border:1px solid #e4e6ee;border-radius:14px;padding:13px 14px;background:#fff}
-  .artcard .art-top{display:flex;justify-content:space-between;align-items:baseline}
-  .artcard .art-no{font-size:11.5px;color:#98a0b3;font-weight:700}
-  .artcard h5{margin:3px 0 1px;font-size:16px}
-  .artcard .meta{font-size:11.5px;color:#a0a5b5}
-  .artframe{margin:9px 0;height:86px;border-radius:8px;background:linear-gradient(140deg,#3a4a63,#20293b 55%,#41576f);
-    display:grid;place-items:center;color:#cfd8ea;font-size:11.5px}
+  /* ---- 전시 안내도 after (기획팀 화면 스타일) ---- */
+  .subbtn-row{display:flex;gap:8px;padding:8px 12px;flex-shrink:0}
+  .subbtn{flex:1.4;background:var(--navy);color:#fff;border-radius:10px;padding:10px;text-align:center;font-size:13.5px;font-weight:700}
+  .subbtn2{flex:1;text-align:center;padding:10px;font-size:13.5px;font-weight:600;color:#666}
+  .bc-row{display:flex;align-items:center;gap:8px;padding:4px 12px 8px;flex-shrink:0}
+  .bc-back{width:28px;height:28px;border-radius:50%;background:#f1f2f6;display:grid;place-items:center;color:#555}
+  .bc-pill{background:#f1f2f6;border-radius:10px;padding:7px 12px;font-size:12px;color:#666}
+  .bc-pill b{color:#222}
+  .plan{position:relative;margin:2px 12px;background:#fff;border-radius:8px;height:170px;flex-shrink:0}
+  .proom{position:absolute;border:2px solid #9db4ea;background:#e9effc;border-radius:2px}
+  .wc{position:absolute;font-size:11px}
+  .dot{position:absolute;width:15px;height:15px;border-radius:50%;background:#4a7df0;border:2px solid #fff;
+    box-shadow:0 1px 4px rgba(30,60,150,.4);cursor:pointer;transition:transform .12s}
+  .dot.on{background:#1c46b8;transform:scale(1.5)}
+  .halls{display:flex;gap:6px;padding:6px 12px 8px;align-items:center;flex-shrink:0;position:relative}
+  .hall{border:1px solid var(--chipline);border-radius:8px;padding:7px 12px;font-size:12px;font-weight:700;
+    background:#f7f8fa;color:#666;cursor:pointer;white-space:nowrap}
+  .hall.on{background:var(--navy);border-color:var(--navy);color:#fff}
+  .artcard{margin:2px 12px 12px;padding:4px 2px;background:#fff;margin-top:auto}
+  .artcard .art-top{display:flex;justify-content:space-between;align-items:baseline;padding:0 2px}
+  .artcard h5{margin:0;font-size:15.5px}
+  .artcard .wall{font-size:11px;color:#a0a5b5}
+  .artcard .meta{font-size:11.5px;color:#a0a5b5;margin:2px 2px 8px}
+  .artphoto{width:100%;height:100px;object-fit:cover;border-radius:6px;display:block}
   .audio{display:flex;align-items:center;justify-content:center;gap:8px;background:#f0f1f6;border-radius:10px;
-    padding:11px;font-size:13.5px;font-weight:700;color:#333;cursor:pointer}
+    padding:11px;font-size:13.5px;font-weight:700;color:#333;cursor:pointer;margin-top:9px}
   .audio.playing{background:var(--accent-soft);color:var(--accent)}
-  .artnav{display:flex;justify-content:space-between;margin-top:9px;font-size:13px;font-weight:700;color:#3a49a8}
+  .artnav{display:flex;justify-content:space-between;align-items:center;margin-top:9px;font-size:12.5px;font-weight:700;color:#3a49a8}
   .artnav span{cursor:pointer;display:flex;align-items:center;gap:3px}
+  .artnav .cnt{color:#98a0b3;font-weight:600;cursor:default}
 
   /* ---- map home (S3) ---- */
-  .maparea{position:relative}
-  .maparea img{width:100%;display:block}
-  .mfloat{position:absolute;width:37px;height:37px;border-radius:50%;background:#3a3f4d;color:#fff;
+  .maparea{position:relative;flex:1;min-height:0;overflow:hidden}
+  .maparea img.mapimg{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .mfloat{position:absolute;width:36px;height:36px;border-radius:50%;background:#3a3f4d;color:#fff;
     display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+  .wfloat{position:absolute;width:36px;height:36px;border-radius:50%;background:#fff;color:#222;
+    display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.22)}
   .my{position:absolute;right:10px;top:10px;background:#3a3f4d;color:#fff;border-radius:999px;
     padding:8px 15px;font-size:13.5px;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.3);
     display:flex;align-items:center;gap:6px}
@@ -142,16 +156,14 @@
   .searchbar{position:absolute;left:10px;right:10px;top:10px;background:#fff;border-radius:999px;
     padding:12px 16px;font-size:13.5px;color:#9aa0ae;box-shadow:0 3px 12px rgba(0,0,0,.18);
     display:flex;gap:9px;align-items:center;font-weight:600}
-  .topsearch{display:flex;align-items:center;gap:9px;margin:8px 14px 4px;border:1px solid #e0e3ec;
-    border-radius:999px;padding:10px 15px;font-size:13.5px;color:#9aa0ae;font-weight:600}
 
   /* ---- 더보기 (S4) ---- */
-  .setrow{display:flex;align-items:center;gap:15px;padding:15px 18px;border-bottom:1px solid #f0f1f5}
-  .setrow .si{width:44px;height:44px;border-radius:50%;background:#e9ecfa;display:grid;place-items:center;color:#5b6cd0}
+  .setrow{display:flex;align-items:center;gap:15px;padding:14px 18px;border-bottom:1px solid #f0f1f5;flex-shrink:0}
+  .setrow .si{width:44px;height:44px;border-radius:50%;background:#e9ecfa;display:grid;place-items:center;color:#5b6cd0;flex-shrink:0}
   .setrow .sn{font-size:16px;font-weight:600;color:#222}
   .setrow .chev{margin-left:auto;color:#c4c8d4;display:grid;place-items:center}
   .setrow.newrow{background:#f5f7ff;outline:2px solid var(--accent);outline-offset:-2px;border-radius:4px}
-  .fontctl{padding:12px 18px 16px;border-bottom:1px solid #f0f1f5;background:#f5f7ff}
+  .fontctl{padding:12px 18px 16px;border-bottom:1px solid #f0f1f5;background:#f5f7ff;flex-shrink:0}
   .fseg{display:flex;gap:6px;margin-bottom:11px}
   .fseg button{flex:1;border:1px solid var(--chipline);background:#fff;border-radius:10px;padding:9px;
     font-weight:700;cursor:pointer;font-family:inherit;color:#333}
@@ -166,7 +178,7 @@
 <div class="wrap">
   <div class="eyebrow">N.O.W 앱 · UI 개선 목업</div>
   <h1>Before / After — 기획팀 수정제안 반영</h1>
-  <p class="lede">왼쪽이 현재 앱, 오른쪽이 개선안입니다. 화면으로 설명되는 것은 정지 화면으로, 눌러야 이해되는 것(전체 카테고리·작품 핀·글씨 크기)만 실제로 동작합니다.</p>
+  <p class="lede">왼쪽이 현재 앱, 오른쪽이 개선안입니다. 코멘트는 화면 밖 폰 아래에 표기했습니다. 눌러야 이해되는 것(전체 카테고리·작품 점·글씨 크기)만 실제로 동작합니다.</p>
 
   <!-- ================= S1 카테고리 내비게이션 ================= -->
   <section>
@@ -180,13 +192,10 @@
           <div class="ph-crumb"><span class="home"><i data-ic="home" data-s="16"></i></span><span class="gt">›</span> 산이정원</div>
           <div class="ph-glob"><span class="g-globe"><i data-ic="globe" data-s="19"></i></span><span class="g-mute"><i data-ic="mute" data-s="18"></i></span></div>
           <div class="ph-band"><div><i data-ic="cal" data-s="16"></i>오늘의 이벤트</div><div><i data-ic="mega" data-s="16"></i>공지</div></div>
-          <div style="position:relative">
-            <div class="chiprow">
-              <span class="chip">안내도</span><span class="chip">테마정원</span>
-              <span class="chip">주요시설</span><span class="chip">식물도감</span>
-              <span class="edge r"><i data-ic="chevR" data-s="14"></i></span>
-            </div>
-            <div class="flag" style="top:56px;right:10px">나머지 7개는 스와이프해야 보임</div>
+          <div class="chiprow">
+            <span class="chip">안내도</span><span class="chip">테마정원</span>
+            <span class="chip">주요시설</span><span class="chip">식물도감</span>
+            <span class="edge r"><i data-ic="chevR" data-s="14"></i></span>
           </div>
           <div class="chat">
             <div class="bubble">산이정원에 오신 걸 환영합니다. 전라남도 바닷바람과 숲의 결이 함께 어우러지는 이곳은, 걸음을 옮길수록 풍경이 차분히 달라지는 정원이에요. 천천히 둘러보시다가 눈에 딱 들어오는 곳이 있으면 바로 말씀해 주세요.</div>
@@ -194,14 +203,17 @@
           </div>
           <div class="ph-input"><span class="mic"><i data-ic="mic" data-s="17"></i></span>메시지를 입력하세요...<span class="send"><i data-ic="send" data-s="18"></i></span></div>
         </div>
-        <p class="cap">현재 — 칩 4개 노출, 나머지는 스와이프해야 존재를 알 수 있음</p>
+        <div class="callouts">
+          <div class="co bad"><span class="mk">●</span><span><b>칩 줄 오른쪽 ›</b> — 나머지 7개 카테고리는 스와이프해야 존재를 알 수 있음</span></div>
+        </div>
+        <p class="cap">현재 화면</p>
       </div>
 
       <div class="ba-arrow">→</div>
 
       <div class="ba-col">
         <span class="ba-tag after">AFTER</span>
-        <div class="phone" style="min-height:600px">
+        <div class="phone">
           <div class="ph-status"><span>SKT 3:49</span><span>5G ▮▮ 55%</span></div>
           <div class="ph-crumb"><span class="home"><i data-ic="home" data-s="16"></i></span><span class="gt">›</span> 산이정원</div>
           <div class="ph-glob"><span class="g-globe"><i data-ic="globe" data-s="19"></i></span><span class="g-mute"><i data-ic="mute" data-s="18"></i></span></div>
@@ -236,12 +248,16 @@
             </div>
           </div>
         </div>
-        <p class="cap"><b>👆 "전체"를 눌러보세요.</b> 풀스크린 리스트(아이콘+이름+설명)가 열리고, 항목을 고르면 챗봇이 바로 안내</p>
+        <div class="callouts">
+          <div class="co good"><span class="mk">●</span><span><b>👆 "전체" 버튼</b> — 누르면 풀스크린 리스트(아이콘+이름+설명). 항목을 고르면 챗봇이 바로 안내</span></div>
+        </div>
+        <p class="cap">개선안</p>
       </div>
     </div>
-    <p class="verdict" style="margin-top:20px">안내도가 여러 개인 관광지는 안내도 존만 좌우 스크롤되고 "전체"는 고정됩니다:</p>
-    <div class="phone" style="width:340px;margin:0 auto">
-      <div class="chiprow">
+    <p class="verdict" style="margin-top:24px">안내도가 여러 개인 관광지 — 칩 줄 부분 확대 예시 (안내도 존만 좌우 스크롤, "전체"는 고정):</p>
+    <div class="strip">
+      <div class="lbl">칩 줄 확대</div>
+      <div class="chiprow" style="border-bottom:none">
         <span style="position:relative;flex:1;min-width:0;overflow:hidden">
           <span style="display:flex;gap:7px;overflow-x:auto;scrollbar-width:none">
             <span class="chip on"><i data-ic="pin" data-s="15"></i>정원 안내도</span>
@@ -258,7 +274,7 @@
   <!-- ================= S2 전시 안내도 ================= -->
   <section>
     <div class="sec-head"><span class="sec-num">2</span><h2>전시 안내도 — 김영갑갤러리 두모악</h2></div>
-    <p class="verdict"><b>문제:</b> 도면 위에 작품 썸네일 수십 장이 실좌표 그대로 붙어, 축소하면 뭉개지고 확대해야 하나씩 보임. 관 구분·관람 순서·작품 정보 진입이 없음. <b>개선(기획팀 4안 통합):</b> 관 선택 → 번호 핀 도면 → 핀 탭 → 작품 카드 + 오디오 가이드.</p>
+    <p class="verdict"><b>문제:</b> 도면 위에 작품 썸네일 수십 장이 실좌표 그대로 붙어, 축소하면 뭉개지고 확대해야 하나씩 보임. <b>개선:</b> 기획팀 수정제안 화면 그대로 — 전시관 분할 탭 + 도면 위 파란 점 + 점 선택 시 하단 작품 정보 + 오디오 가이드.</p>
     <div class="ba">
       <div class="ba-col">
         <span class="ba-tag before">BEFORE</span>
@@ -271,21 +287,17 @@
             <span class="chip on">안내도</span><span class="chip">시설안내</span><span class="chip">관람안내</span>
             <span class="edge l"><i data-ic="chevL" data-s="14"></i></span><span class="edge r"><i data-ic="chevR" data-s="14"></i></span>
           </div>
-          <div style="display:flex;gap:8px;padding:9px 12px">
-            <span style="flex:1.4;background:var(--navy);color:#fff;border-radius:10px;padding:11px;text-align:center;font-size:14px;font-weight:700">1전시실 바람</span>
-            <span style="flex:1;text-align:center;padding:11px;font-size:14px;font-weight:600;color:#666">앨범</span>
-          </div>
-          <div style="position:relative">
-            <div class="flag" style="top:34px;left:10px">확대해야 겨우 한 작품씩 보임</div>
-            <img class="imgblock" src="img/gallery-zoom.jpg" alt="현재 전시 안내도 확대 — 썸네일 겹침">
-          </div>
-          <div style="position:relative;border-top:1px solid #eee">
-            <div class="flag" style="top:8px;right:10px">축소하면 전부 뭉개짐</div>
-            <img class="imgblock" src="img/gallery-full.jpg" alt="현재 전시 안내도 축소 — 썸네일 뭉침">
-          </div>
-          <div style="padding:8px 12px 14px;font-size:11.5px;color:#98a0b3">현재 화면 (실제 스크린샷) — 작품 썸네일이 도면 좌표에 그대로 겹쳐 있음</div>
+          <div class="subbtn-row"><span class="subbtn">1전시실 바람</span><span class="subbtn2">앨범</span></div>
+          <img class="imgblock" src="img/gallery-zoom.jpg" alt="현재 전시 안내도 확대 — 썸네일 겹침">
+          <div style="border-top:1px solid #eee"></div>
+          <img class="imgblock" src="img/gallery-full.jpg" alt="현재 전시 안내도 축소 — 썸네일 뭉침">
+          <div style="padding:8px 12px;font-size:11.5px;color:#98a0b3">위: 확대 상태 · 아래: 축소 상태 (실제 스크린샷)</div>
         </div>
-        <p class="cap">현재 — 관 구분 없음, 작품 정보·오디오 진입 불명확</p>
+        <div class="callouts">
+          <div class="co bad"><span class="mk">●</span><span><b>위 도면(확대)</b> — 확대해야 겨우 한 작품씩 보임</span></div>
+          <div class="co bad"><span class="mk">●</span><span><b>아래 도면(축소)</b> — 썸네일 수십 장이 뭉개져 구분 불가, 관 구분·작품 정보 진입도 없음</span></div>
+        </div>
+        <p class="cap">현재 화면</p>
       </div>
 
       <div class="ba-arrow">→</div>
@@ -295,45 +307,58 @@
         <div class="phone">
           <div class="ph-status"><span>SKT 3:47</span><span>5G ▮▮ 56%</span></div>
           <div class="ph-crumb"><span class="home"><i data-ic="home" data-s="16"></i></span><span class="gt">›</span> 김영갑갤러리 두모악</div>
-          <div class="ph-band"><div><i data-ic="mega" data-s="16"></i>공지</div><div><i data-ic="cal" data-s="16"></i>오늘의 이벤트</div></div>
-          <div class="seg" id="s2seg">
-            <span class="segbtn on" onclick="s2hall(this,'두모악관')">두모악관</span>
-            <span class="segbtn" onclick="s2hall(this,'하날오름관')">하날오름관</span>
-            <span class="segbtn" onclick="s2hall(this,'유품전시실')">유품전시실</span>
-            <span class="segbtn" onclick="s2hall(this,'영상관')">영상관</span>
+          <div class="ph-glob"><span class="g-globe"><i data-ic="globe" data-s="19"></i></span><span class="g-mute"><i data-ic="mute" data-s="18"></i></span></div>
+          <div class="chiprow">
+            <span class="chip on">안내도</span><span class="chip">시설안내</span><span class="chip">관람안내</span>
+            <span class="edge l"><i data-ic="chevL" data-s="14"></i></span><span class="edge r"><i data-ic="chevR" data-s="14"></i></span>
           </div>
-          <div class="floor" id="s2floor">
-            <div class="room" style="left:4%;top:8%;width:56%;height:84%"></div>
-            <div class="room" style="left:63%;top:8%;width:33%;height:52%"></div>
-            <div class="roomlabel" style="left:7%;top:12%" id="s2hallname">두모악관 · 1전시실 "바람"</div>
-            <div class="roomlabel" style="left:66%;top:12%">복도</div>
-            <span class="pin on" style="left:10%;top:34%" onclick="s2pin(this,0)">1</span>
-            <span class="pin" style="left:24%;top:26%" onclick="s2pin(this,1)">2</span>
-            <span class="pin" style="left:38%;top:34%" onclick="s2pin(this,2)">3</span>
-            <span class="pin" style="left:48%;top:56%" onclick="s2pin(this,3)">4</span>
-            <span class="pin" style="left:34%;top:74%" onclick="s2pin(this,4)">5</span>
-            <span class="pin" style="left:18%;top:66%" onclick="s2pin(this,5)">6</span>
-            <span class="pin" style="left:70%;top:36%" onclick="s2pin(this,6)">7</span>
-            <span class="pin" style="left:84%;top:44%" onclick="s2pin(this,7)">8</span>
+          <div class="subbtn-row"><span class="subbtn">2전시실 오름</span><span class="subbtn2">앨범</span></div>
+          <div class="bc-row"><span class="bc-back"><i data-ic="chevL" data-s="13"></i></span><span class="bc-pill">안내도 &gt;<b>2전시실 오름</b></span></div>
+          <div class="plan" id="s2plan">
+            <span class="wc" style="left:2px;top:38px">🚹</span><span class="wc" style="left:2px;top:58px">🚺</span>
+            <div class="proom" style="left:22px;top:18px;width:120px;height:120px"></div>
+            <div class="proom" style="left:142px;top:34px;width:96px;height:104px"></div>
+            <div class="proom" style="left:238px;top:18px;width:66px;height:88px"></div>
+            <span class="dot on" style="left:38px;top:28px" onclick="s2pick(this,0)"></span>
+            <span class="dot" style="left:84px;top:24px" onclick="s2pick(this,1)"></span>
+            <span class="dot" style="left:126px;top:52px" onclick="s2pick(this,2)"></span>
+            <span class="dot" style="left:158px;top:44px" onclick="s2pick(this,3)"></span>
+            <span class="dot" style="left:206px;top:60px" onclick="s2pick(this,4)"></span>
+            <span class="dot" style="left:248px;top:34px" onclick="s2pick(this,5)"></span>
+            <span class="dot" style="left:282px;top:56px" onclick="s2pick(this,6)"></span>
+            <span class="dot" style="left:96px;top:112px" onclick="s2pick(this,7)"></span>
+          </div>
+          <div class="halls" id="s2halls">
+            <span class="hall" onclick="s2hall(this,'두모악관')">두모악관</span>
+            <span class="hall on" onclick="s2hall(this,'하날오름관')">하날오름관</span>
+            <span class="hall" onclick="s2hall(this,'유품전시실')">유품전시실</span>
+            <span class="edge r" style="position:static;transform:none;margin-left:auto"><i data-ic="chevR" data-s="13"></i></span>
           </div>
           <div class="artcard">
-            <div class="art-top"><span class="art-no" id="s2no">관람 순서 1 / 8</span><span class="art-no">벽면 A</span></div>
-            <h5 id="s2title">용눈이오름</h5>
-            <div class="meta" id="s2meta">2000 · C-Print · 150×50cm</div>
-            <div class="artframe" id="s2frame">작품 사진</div>
+            <div class="art-top"><h5 id="s2title">F1 작품</h5><span class="wall">wall A</span></div>
+            <div class="meta" id="s2meta">구름의 언덕 · 2000, C-Print, 150 × 50cm</div>
+            <img class="artphoto" src="img/art-photo.jpg" alt="작품 사진">
             <div class="audio" id="s2audio" onclick="s2play()"><i data-ic="play" data-s="14"></i><span id="s2audiotext">오디오 가이드 듣기</span></div>
-            <div class="artnav"><span onclick="s2step(-1)"><i data-ic="chevL" data-s="13"></i>이전 작품</span><span onclick="s2step(1)">다음 작품<i data-ic="chevR" data-s="13"></i></span></div>
+            <div class="artnav">
+              <span onclick="s2step(-1)"><i data-ic="chevL" data-s="13"></i>이전 작품</span>
+              <span class="cnt" id="s2cnt">1/8</span>
+              <span onclick="s2step(1)">다음 작품<i data-ic="chevR" data-s="13"></i></span>
+            </div>
           </div>
         </div>
-        <p class="cap"><b>👆 관 탭·번호 핀·오디오 버튼이 동작합니다.</b> 썸네일 대신 관람 순서 번호 핀 — 축소해도 안 뭉개지고, 핀을 누르면 작품 카드가 열림</p>
+        <div class="callouts">
+          <div class="co good"><span class="mk">●</span><span><b>👆 도면의 파란 점·전시관 탭·오디오 버튼</b>이 동작합니다. 점을 누르면 하단에 해당 작품 정보</span></div>
+          <div class="co good"><span class="mk">●</span><span>기획팀 수정제안 화면(전시 안내도 #1·#4)을 그대로 재현 — 전시관 분할 + 작품 정보 + 오디오 가이드</span></div>
+        </div>
+        <p class="cap">개선안 (기획팀 제안 반영)</p>
       </div>
     </div>
   </section>
 
   <!-- ================= S3 지도 홈 검색 ================= -->
   <section>
-    <div class="sec-head"><span class="sec-num">3</span><h2>지도 홈 — 검색</h2></div>
-    <p class="verdict"><b>문제:</b> 검색이 지도 위 작은 돋보기 아이콘 하나에 숨어 있어 눈에 안 띔. <b>개선:</b> 검색바를 명시적으로 노출 — 기획팀 제안 두 방식을 나란히 비교. (정지 화면으로 충분해 인터랙션 없음)</p>
+    <div class="sec-head"><span class="sec-num">3</span><h2>지도 홈 — 검색바 삽입</h2></div>
+    <p class="verdict"><b>문제:</b> 검색이 지도 위 작은 돋보기 아이콘 하나에 숨어 있어 눈에 안 띔. <b>개선:</b> 기획팀 #1 방식 — 지도 위 검색바 상시 노출. (정지 화면으로 충분해 인터랙션 없음)</p>
     <div class="ba">
       <div class="ba-col">
         <span class="ba-tag before">BEFORE</span>
@@ -342,13 +367,12 @@
           <img class="nowlogo" src="img/now-logo.png" alt="N.O.W">
           <div class="weather">☀️ <u>영등포구 28°C</u></div>
           <div class="maparea">
-            <img src="img/yeouido-map.jpg" alt="현재 지도 홈">
+            <img class="mapimg" src="img/yeouido-map.jpg" alt="현재 지도 홈">
             <span class="mfloat" style="left:10px;top:10px"><i data-ic="navi" data-s="16"></i></span>
             <span class="mfloat" style="left:54px;top:10px"><i data-ic="star" data-s="16"></i></span>
             <span class="mfloat" style="left:98px;top:10px"><i data-ic="filter" data-s="16"></i></span>
             <span class="my"><i data-ic="star" data-s="14"></i>MY</span>
             <span class="msearch" style="right:12px;top:56px"><i data-ic="search" data-s="17"></i></span>
-            <div class="flag" style="top:60px;right:60px">검색이 아이콘 하나에 숨음</div>
           </div>
           <div class="tabbar">
             <span class="tab on"><span class="ti"><i data-ic="pin" data-s="20"></i></span>플레이스</span>
@@ -358,24 +382,26 @@
             <span class="tab"><span class="ti"><i data-ic="dots" data-s="20"></i></span>더보기</span>
           </div>
         </div>
-        <p class="cap">현재 — 우상단 돋보기가 유일한 검색 진입점</p>
+        <div class="callouts">
+          <div class="co bad"><span class="mk">●</span><span><b>지도 우상단 돋보기</b> — 검색이 아이콘 하나에 숨어 있어 유일한 진입점이 눈에 안 띔</span></div>
+        </div>
+        <p class="cap">현재 화면</p>
       </div>
 
       <div class="ba-arrow">→</div>
 
       <div class="ba-col">
-        <span class="ba-tag after">AFTER ①</span>
+        <span class="ba-tag after">AFTER</span>
         <div class="phone">
           <div class="ph-status"><span>SKT 3:47</span><span>5G ▮▮ 56%</span></div>
           <img class="nowlogo" src="img/now-logo.png" alt="N.O.W">
           <div class="weather">☀️ <u>영등포구 28°C</u></div>
           <div class="maparea">
-            <img src="img/yeouido-map.jpg" alt="개선 — 지도 위 검색바">
+            <img class="mapimg" src="img/yeouido-map.jpg" alt="개선 — 지도 위 검색바">
             <div class="searchbar"><i data-ic="search" data-s="16"></i>가이드 받고 싶은 장소를 검색하세요</div>
-            <span class="mfloat" style="left:10px;top:66px"><i data-ic="navi" data-s="16"></i></span>
-            <span class="mfloat" style="left:54px;top:66px"><i data-ic="star" data-s="16"></i></span>
-            <span class="mfloat" style="left:98px;top:66px"><i data-ic="filter" data-s="16"></i></span>
-            <div class="flag good" style="top:70px;right:10px">검색바 상시 노출</div>
+            <span class="wfloat" style="right:10px;top:64px"><i data-ic="navi" data-s="16"></i></span>
+            <span class="wfloat" style="right:10px;top:108px"><i data-ic="star" data-s="16"></i></span>
+            <span class="wfloat" style="right:10px;top:152px"><i data-ic="filter" data-s="16"></i></span>
           </div>
           <div class="tabbar">
             <span class="tab on"><span class="ti"><i data-ic="pin" data-s="20"></i></span>플레이스</span>
@@ -385,38 +411,10 @@
             <span class="tab"><span class="ti"><i data-ic="dots" data-s="20"></i></span>더보기</span>
           </div>
         </div>
-        <p class="cap">기획팀 #1 — 지도 위 검색바 (발견성 최고, 지도 10% 가림)</p>
-      </div>
-
-      <div class="ba-col">
-        <span class="ba-tag after">AFTER ②</span>
-        <div class="phone">
-          <div class="ph-status"><span>SKT 3:47</span><span>5G ▮▮ 56%</span></div>
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <img class="nowlogo" src="img/now-logo.png" alt="N.O.W">
-            <span style="display:flex;gap:7px;margin-right:14px">
-              <span style="width:34px;height:34px;border-radius:50%;background:#f1f2f6;display:grid;place-items:center;color:#444"><i data-ic="search" data-s="16"></i></span>
-              <span style="width:34px;height:34px;border-radius:50%;background:#f1f2f6;display:grid;place-items:center;color:#444"><i data-ic="filter" data-s="16"></i></span>
-            </span>
-          </div>
-          <div class="topsearch"><i data-ic="search" data-s="15"></i>가이드 받고 싶은 장소를 검색하세요</div>
-          <div class="weather" style="margin-top:6px">☀️ <u>영등포구 28°C</u></div>
-          <div class="maparea">
-            <img src="img/yeouido-map.jpg" alt="개선 — 상단바 검색">
-            <span class="mfloat" style="left:10px;top:10px"><i data-ic="navi" data-s="16"></i></span>
-            <span class="mfloat" style="left:54px;top:10px"><i data-ic="star" data-s="16"></i></span>
-            <span class="mfloat" style="left:98px;top:10px"><i data-ic="filter" data-s="16"></i></span>
-            <div class="flag good" style="top:10px;right:10px">지도는 그대로,<br>검색은 로고 라인에</div>
-          </div>
-          <div class="tabbar">
-            <span class="tab on"><span class="ti"><i data-ic="pin" data-s="20"></i></span>플레이스</span>
-            <span class="tab"><span class="ti"><i data-ic="globe" data-s="20"></i></span>글로벌</span>
-            <span class="tab"><span class="ti"><i data-ic="cam" data-s="20"></i></span>카메라</span>
-            <span class="tab"><span class="ti"><i data-ic="folder" data-s="20"></i></span>리멤버</span>
-            <span class="tab"><span class="ti"><i data-ic="dots" data-s="20"></i></span>더보기</span>
-          </div>
+        <div class="callouts">
+          <div class="co good"><span class="mk">●</span><span><b>지도 상단 검색바</b> 상시 노출, 보조 버튼은 검색바 아래 오른쪽 세로 배치 (기획팀 #1 화면 그대로)</span></div>
         </div>
-        <p class="cap">기획팀 #2 — 탭바(로고 라인) 검색 (지도 안 가림, 노출은 #1보다 약함)</p>
+        <p class="cap">개선안 (기획팀 #1)</p>
       </div>
     </div>
   </section>
@@ -437,7 +435,8 @@
           <div class="setrow"><span class="si"><i data-ic="point" data-s="18"></i></span><span class="sn">포인트</span><span class="chev"><i data-ic="chevR" data-s="14"></i></span></div>
           <div class="setrow"><span class="si"><i data-ic="gear" data-s="18"></i></span><span class="sn">음성설정</span><span class="chev"><i data-ic="chevR" data-s="14"></i></span></div>
           <div class="setrow"><span class="si"><i data-ic="q" data-s="18"></i></span><span class="sn">도움말</span><span class="chev"><i data-ic="chevR" data-s="14"></i></span></div>
-          <div style="padding:13px 18px;font-size:12.5px;color:#98a0b3">Version <span style="color:#3a6df0">1.0.194</span></div>
+          <div class="setrow"><span class="si"><i data-ic="q" data-s="18"></i></span><span class="sn">개인정보 처리방침</span><span class="chev"><i data-ic="chevR" data-s="14"></i></span></div>
+          <div style="padding:12px 18px;font-size:12.5px;color:#98a0b3">Version <span style="color:#3a6df0">1.0.194</span></div>
           <div class="tabbar">
             <span class="tab"><span class="ti"><i data-ic="pin" data-s="20"></i></span>플레이스</span>
             <span class="tab"><span class="ti"><i data-ic="globe" data-s="20"></i></span>글로벌</span>
@@ -446,7 +445,10 @@
             <span class="tab on"><span class="ti"><i data-ic="dots" data-s="20"></i></span>더보기</span>
           </div>
         </div>
-        <p class="cap">현재 — 글씨 크기 관련 설정 없음</p>
+        <div class="callouts">
+          <div class="co bad"><span class="mk">●</span><span>글씨 크기 관련 설정 없음</span></div>
+        </div>
+        <p class="cap">현재 화면</p>
       </div>
 
       <div class="ba-arrow">→</div>
@@ -457,6 +459,7 @@
           <div class="ph-status"><span>SKT 3:47</span><span>5G ▮▮ 56%</span></div>
           <img class="nowlogo" src="img/now-logo.png" alt="N.O.W">
           <div class="setrow"><span class="si"><i data-ic="mega" data-s="18"></i></span><span class="sn">공지사항</span><span class="chev"><i data-ic="chevR" data-s="14"></i></span></div>
+          <div class="setrow"><span class="si"><i data-ic="cal" data-s="18"></i></span><span class="sn">이벤트</span><span class="chev"><i data-ic="chevR" data-s="14"></i></span></div>
           <div class="setrow"><span class="si"><i data-ic="globe" data-s="18"></i></span><span class="sn">나의 언어</span><span class="chev"><i data-ic="chevR" data-s="14"></i></span></div>
           <div class="setrow newrow"><span class="si"><i data-ic="fontsz" data-s="18"></i></span><span class="sn">글씨 크기</span><span class="chev"><i data-ic="chevR" data-s="14"></i></span></div>
           <div class="fontctl">
@@ -477,20 +480,23 @@
             <span class="tab on"><span class="ti"><i data-ic="dots" data-s="20"></i></span>더보기</span>
           </div>
         </div>
-        <p class="cap"><b>👆 작게/보통/크게를 눌러보세요.</b> 미리보기 문장이 실제 적용 크기로 변함</p>
+        <div class="callouts">
+          <div class="co good"><span class="mk">●</span><span><b>👆 "나의 언어" 아래 새 행</b> — 작게/보통/크게를 누르면 미리보기 문장이 실제 크기로 변함</span></div>
+        </div>
+        <p class="cap">개선안</p>
       </div>
     </div>
   </section>
 
   <footer>
     N.O.W UI 개선 목업 · 2026-07-03 · 기획팀 수정제안(2026-07-03) + 실제 앱 스크린샷 기반.
-    BEFORE의 지도·도면·로고는 실제 앱 화면을 그대로 사용, UI는 재현.
-    전시관 명칭(두모악관·하날오름관 등)은 실제 갤러리 구성 기준이며 핀 위치·작품 배치는 예시.
+    BEFORE의 지도·도면·로고·작품 사진은 실제 앱 화면을 그대로 사용, UI는 재현.
+    도면의 점 위치·작품 배치는 예시.
   </footer>
 </div>
 
 <script>
-/* ---- SVG 라인 아이콘 (실제 앱의 모노톤 아이콘 스타일) ---- */
+/* ---- SVG 라인 아이콘 ---- */
 const ICONS = {
   home:'<path d="M3.5 11 12 4.5 20.5 11"/><path d="M5.5 9.5V19.5H18.5V9.5"/>',
   globe:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c-3.4 3.5-3.4 13.5 0 17M12 3.5c3.4 3.5 3.4 13.5 0 17"/>',
@@ -509,7 +515,6 @@ const ICONS = {
   folder:'<path d="M3.5 6.5h6l2 2.5h9v10h-17v-12.5Z"/>',
   dots:'<circle cx="5.5" cy="12" r="1.7" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/><circle cx="18.5" cy="12" r="1.7" fill="currentColor" stroke="none"/>',
   play:'<path d="M8 5.5v13l11-6.5L8 5.5Z" fill="currentColor" stroke="none"/>',
-  pause:'<path d="M8.5 5.5v13M15.5 5.5v13" stroke-width="2.6"/>',
   chevL:'<path d="M14.5 5.5 8 12l6.5 6.5"/>',
   chevR:'<path d="M9.5 5.5 16 12l-6.5 6.5"/>',
   back:'<path d="M14.5 5.5 8 12l6.5 6.5M8 12h12" stroke-width="1.9"/>',
@@ -526,8 +531,7 @@ const ICONS = {
 };
 document.querySelectorAll('i[data-ic]').forEach(el=>{
   const s = el.dataset.s || 18;
-  const svg = `<svg class="ic" viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[el.dataset.ic]||''}</svg>`;
-  el.outerHTML = svg;
+  el.outerHTML = `<svg class="ic" viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[el.dataset.ic]||''}</svg>`;
 });
 
 /* S1 */
@@ -543,48 +547,42 @@ const S1BOT = {
 };
 function s1ask(label){
   const u = document.createElement('div'); u.className='bubble user'; u.textContent = label + ' 알려줘';
-  s1chat.appendChild(u);
+  s1chat.appendChild(u); s1chat.scrollTop = s1chat.scrollHeight;
   setTimeout(()=>{
     const b = document.createElement('div'); b.className='bubble';
     b.textContent = S1BOT[label] || label + '을(를) 안내해 드릴게요.';
-    s1chat.appendChild(b);
+    s1chat.appendChild(b); s1chat.scrollTop = s1chat.scrollHeight;
   }, 500);
 }
 
-/* S2 */
-const HALLS = {
-  '두모악관': {label:'두모악관 · 1전시실 "바람"', works:[
-    ['용눈이오름','2000 · C-Print · 150×50cm'],['다랑쉬오름의 아침','1998 · C-Print · 150×50cm'],
-    ['중산간 들녘','1999 · C-Print · 150×50cm'],['바람 부는 억새','2001 · C-Print · 150×50cm'],
-    ['구름의 언덕','2000 · C-Print · 150×50cm'],['섭지코지','1997 · C-Print · 150×50cm'],
-    ['비 오는 오름','2002 · C-Print · 150×50cm'],['노을의 바다','2003 · C-Print · 150×50cm']]},
-  '하날오름관': {label:'하날오름관 · 2전시실', works:[
-    ['하늘과 오름','2001 · C-Print'],['들꽃의 시간','2000 · C-Print'],['안개 낀 아침','1999 · C-Print'],
-    ['눈 내린 오름','2002 · C-Print'],['봄의 중산간','2003 · C-Print'],['바다 안개','2001 · C-Print'],
-    ['저녁 빛','2000 · C-Print'],['바람의 길','2002 · C-Print']]},
-  '유품전시실': {label:'유품전시실', works:[
-    ['김영갑의 카메라','유품'],['육필 원고','유품'],['작업 노트','유품'],['필름과 도구','유품'],
-    ['생전 사진','기록'],['편지','기록'],['전시 포스터','기록'],['서재 재현','기록']]},
-  '영상관': {label:'영상관', works:[
-    ['다큐멘터리 상영','20분 · 상시'],['인터뷰 영상','12분'],['제주 풍경 영상','15분'],['갤러리 조성기','10분'],
-    ['오름 4계','18분'],['사진가의 하루','8분'],['관람객 인터뷰','6분'],['아카이브','상시']]}
+/* S2 — 기획팀 화면 스타일 */
+const S2HALLS = {
+  '두모악관': [['구름의 언덕','2000, C-Print, 150 × 50cm'],['용눈이오름','2000, C-Print, 150 × 50cm'],
+    ['다랑쉬오름의 아침','1998, C-Print, 150 × 50cm'],['중산간 들녘','1999, C-Print, 150 × 50cm'],
+    ['바람 부는 억새','2001, C-Print, 150 × 50cm'],['섭지코지','1997, C-Print, 150 × 50cm'],
+    ['비 오는 오름','2002, C-Print, 150 × 50cm'],['노을의 바다','2003, C-Print, 150 × 50cm']],
+  '하날오름관': [['구름의 언덕','2000, C-Print, 150 × 50cm'],['하늘과 오름','2001, C-Print, 150 × 50cm'],
+    ['들꽃의 시간','2000, C-Print, 150 × 50cm'],['안개 낀 아침','1999, C-Print, 150 × 50cm'],
+    ['눈 내린 오름','2002, C-Print, 150 × 50cm'],['봄의 중산간','2003, C-Print, 150 × 50cm'],
+    ['바다 안개','2001, C-Print, 150 × 50cm'],['저녁 빛','2000, C-Print, 150 × 50cm']],
+  '유품전시실': [['김영갑의 카메라','유품'],['육필 원고','유품'],['작업 노트','유품'],['필름과 도구','유품'],
+    ['생전 사진','기록'],['편지','기록'],['전시 포스터','기록'],['서재 재현','기록']]
 };
-let s2cur = '두모악관', s2idx = 0;
+let s2cur = '하날오름관', s2idx = 0;
 function s2render(){
-  const h = HALLS[s2cur];
-  document.getElementById('s2hallname').textContent = h.label;
-  document.getElementById('s2no').textContent = '관람 순서 ' + (s2idx+1) + ' / 8';
-  document.getElementById('s2title').textContent = h.works[s2idx][0];
-  document.getElementById('s2meta').textContent = h.works[s2idx][1];
-  document.querySelectorAll('#s2floor .pin').forEach((p,i)=>p.classList.toggle('on', i===s2idx));
+  const w = S2HALLS[s2cur][s2idx];
+  document.getElementById('s2title').textContent = 'F' + (s2idx+1) + ' 작품';
+  document.getElementById('s2meta').textContent = w[0] + ' · ' + w[1];
+  document.getElementById('s2cnt').textContent = (s2idx+1) + '/8';
+  document.querySelectorAll('#s2plan .dot').forEach((p,i)=>p.classList.toggle('on', i===s2idx));
   const a = document.getElementById('s2audio');
   a.classList.remove('playing');
   document.getElementById('s2audiotext').textContent = '오디오 가이드 듣기';
 }
 function s2hall(btn, name){ s2cur = name; s2idx = 0;
-  document.querySelectorAll('#s2seg .segbtn').forEach(b=>b.classList.toggle('on', b===btn));
+  document.querySelectorAll('#s2halls .hall').forEach(b=>b.classList.toggle('on', b===btn));
   s2render(); }
-function s2pin(el, i){ s2idx = i; s2render(); }
+function s2pick(el, i){ s2idx = i; s2render(); }
 function s2step(d){ s2idx = (s2idx + d + 8) % 8; s2render(); }
 function s2play(){ const a = document.getElementById('s2audio');
   const on = a.classList.toggle('playing');
