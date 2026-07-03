@@ -170,6 +170,30 @@
   .fseg button.on{background:var(--navy);border-color:var(--navy);color:#fff}
   .fpreview{background:#fff;border:1px dashed #c9cfe4;border-radius:10px;padding:11px 13px;color:#333;line-height:1.6}
 
+  /* 하단 모드 탭 (애프터② 한 화면 통합) */
+  .mtabs{display:flex;gap:6px;padding:2px 12px 6px;flex-shrink:0}
+  .mtab{flex:1;text-align:center;border:1px solid var(--chipline);border-radius:8px;padding:7px 2px;
+    font-size:12px;font-weight:700;color:#666;cursor:pointer;background:#fff;white-space:nowrap}
+  .mtab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .modewrap{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+  .wlist{margin:0 12px 10px;overflow-y:auto;flex:1}
+  .wrow{display:flex;gap:10px;align-items:center;border:1px solid #eceef4;border-radius:10px;
+    padding:8px;margin-bottom:7px;cursor:pointer}
+  .wthumb{width:54px;height:38px;border-radius:6px;object-fit:cover;flex-shrink:0;background:#e8eaf0}
+  .wrow .wt{font-size:13px;font-weight:700;color:#222}
+  .wrow .wd{font-size:10.5px;color:#a0a5b5}
+  .carousel{margin:0 12px 10px}
+  .carimg{width:100%;height:118px;object-fit:cover;border-radius:8px;display:block}
+  .carcap{font-size:12.5px;margin-top:8px;color:#333}
+  .carcap .num{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;
+    background:#4a7df0;color:#fff;font-size:10px;font-weight:800;margin-right:5px}
+  .carmeta{font-size:11px;color:#a0a5b5;margin-top:2px}
+  .cardots{display:flex;gap:4px;justify-content:center;align-items:center;margin-top:10px}
+  .cdot{width:6px;height:6px;border-radius:50%;background:#d5d9e6}
+  .cdot.on{background:#3a49a8}
+  .carnext{margin-left:auto;width:28px;height:28px;border-radius:50%;border:1px solid var(--chipline);
+    display:grid;place-items:center;color:#3a49a8;cursor:pointer}
+
   /* 높이 조임 (720px 안에 맞추기) */
   .tight .ph-glob{padding:2px 14px 4px}
   .tight .plan{height:148px}
@@ -364,7 +388,72 @@
           <div class="co good"><span class="mk">●</span><span><b>👆 도면의 파란 점·전시관 탭·오디오 버튼</b>이 동작합니다. 점을 누르면 하단에 해당 작품 정보</span></div>
           <div class="co good"><span class="mk">●</span><span>기획팀 수정제안 화면(전시 안내도 #1·#4)을 그대로 재현 — 전시관 분할 + 작품 정보 + 오디오 가이드</span></div>
         </div>
-        <p class="cap">개선안 (기획팀 제안 반영)</p>
+        <p class="cap">개선안 ① (기획팀 제안 반영)</p>
+      </div>
+
+      <div class="ba-col">
+        <span class="ba-tag after">AFTER ② 한 화면 통합</span>
+        <div class="phone tight">
+          <div class="ph-status"><span>SKT 3:47</span><span>5G ▮▮ 56%</span></div>
+          <div class="ph-crumb"><span class="home"><i data-ic="home" data-s="16"></i></span><span class="gt">›</span> 김영갑갤러리 두모악</div>
+          <div class="chiprow">
+            <span class="chip on">안내도</span><span class="chip">시설안내</span><span class="chip">관람안내</span>
+            <span class="edge l"><i data-ic="chevL" data-s="14"></i></span><span class="edge r"><i data-ic="chevR" data-s="14"></i></span>
+          </div>
+          <div class="subbtn-row"><span class="subbtn">2전시실 오름</span><span class="subbtn2">앨범</span></div>
+          <div class="plan" id="s2bplan">
+            <span class="wc" style="left:2px;top:38px">🚹</span><span class="wc" style="left:2px;top:58px">🚺</span>
+            <div class="proom" style="left:22px;top:18px;width:120px;height:112px"></div>
+            <div class="proom" style="left:142px;top:34px;width:96px;height:96px"></div>
+            <div class="proom" style="left:238px;top:18px;width:66px;height:82px"></div>
+            <span class="dot on" style="left:38px;top:28px" onclick="s2bPick(0)"></span>
+            <span class="dot" style="left:84px;top:24px" onclick="s2bPick(1)"></span>
+            <span class="dot" style="left:126px;top:52px" onclick="s2bPick(2)"></span>
+            <span class="dot" style="left:158px;top:44px" onclick="s2bPick(3)"></span>
+            <span class="dot" style="left:206px;top:60px" onclick="s2bPick(4)"></span>
+            <span class="dot" style="left:248px;top:34px" onclick="s2bPick(5)"></span>
+            <span class="dot" style="left:282px;top:56px" onclick="s2bPick(6)"></span>
+            <span class="dot" style="left:96px;top:104px" onclick="s2bPick(7)"></span>
+          </div>
+          <div class="halls">
+            <span class="hall">두모악관</span>
+            <span class="hall on">하날오름관</span>
+            <span class="hall">유품전시실</span>
+            <span class="edge r" style="position:static;transform:none;margin-left:auto"><i data-ic="chevR" data-s="13"></i></span>
+          </div>
+          <div class="mtabs">
+            <span class="mtab on" onclick="s2bMode(this,'info')">작품 정보</span>
+            <span class="mtab" onclick="s2bMode(this,'list')">작품 리스트</span>
+            <span class="mtab" onclick="s2bMode(this,'order')">관람 순서</span>
+          </div>
+          <div class="modewrap">
+            <!-- 작품 정보 -->
+            <div id="s2b-info" class="artcard" style="margin-top:0">
+              <div class="art-top"><h5 id="s2btitle">F1 작품</h5><span class="wall">wall A</span></div>
+              <div class="meta" id="s2bmeta">구름의 언덕 · 2000, C-Print, 150 × 50cm</div>
+              <img class="artphoto" src="img/art-photo.jpg" alt="작품 사진">
+              <div class="audio" id="s2baudio" onclick="s2bPlay()"><i data-ic="play" data-s="14"></i><span id="s2baudiotext">오디오 가이드 듣기</span></div>
+              <div class="artnav">
+                <span onclick="s2bStep(-1)"><i data-ic="chevL" data-s="13"></i>이전 작품</span>
+                <span class="cnt" id="s2bcnt">1/8</span>
+                <span onclick="s2bStep(1)">다음 작품<i data-ic="chevR" data-s="13"></i></span>
+              </div>
+            </div>
+            <!-- 작품 리스트 -->
+            <div id="s2b-list" class="wlist" style="display:none"></div>
+            <!-- 관람 순서 -->
+            <div id="s2b-order" class="carousel" style="display:none">
+              <img class="carimg" src="img/art-photo.jpg" alt="작품 사진">
+              <div class="carcap"><span class="num" id="s2bonum">1</span><b id="s2boname">F1 작품, 구름의 언덕</b></div>
+              <div class="carmeta" id="s2bometa">2000, C-Print, 150 × 50cm</div>
+              <div class="cardots" id="s2bdots"></div>
+            </div>
+          </div>
+        </div>
+        <div class="callouts">
+          <div class="co good"><span class="mk">●</span><span><b>👆 하단 소탭</b>으로 기획팀 3안(-1 작품 정보 / -2 작품 리스트 / -3 관람 순서)을 <b>한 화면에서 전환</b>. 리스트에서 작품을 누르면 작품 정보 탭으로 이동</span></div>
+        </div>
+        <p class="cap">개선안 ② (3안을 한 화면에 통합)</p>
       </div>
     </div>
   </section>
@@ -601,6 +690,51 @@ function s2step(d){ s2idx = (s2idx + d + 8) % 8; s2render(); }
 function s2play(){ const a = document.getElementById('s2audio');
   const on = a.classList.toggle('playing');
   document.getElementById('s2audiotext').textContent = on ? '재생 중… 0:07 / 1:42' : '오디오 가이드 듣기'; }
+
+/* S2 애프터② — 한 화면 통합 (작품 정보/리스트/관람 순서) */
+let s2bIdx = 0, s2bModeCur = 'info';
+const S2B = S2HALLS['하날오름관'];
+function s2bRender(){
+  const w = S2B[s2bIdx];
+  document.getElementById('s2btitle').textContent = 'F' + (s2bIdx+1) + ' 작품';
+  document.getElementById('s2bmeta').textContent = w[0] + ' · ' + w[1];
+  document.getElementById('s2bcnt').textContent = (s2bIdx+1) + '/8';
+  document.getElementById('s2bonum').textContent = s2bIdx+1;
+  document.getElementById('s2boname').textContent = 'F' + (s2bIdx+1) + ' 작품, ' + w[0];
+  document.getElementById('s2bometa').textContent = w[1];
+  document.querySelectorAll('#s2bplan .dot').forEach((p,i)=>p.classList.toggle('on', i===s2bIdx));
+  document.querySelectorAll('#s2bdots .cdot').forEach((d,i)=>d.classList.toggle('on', i===s2bIdx));
+  const a = document.getElementById('s2baudio');
+  a.classList.remove('playing');
+  document.getElementById('s2baudiotext').textContent = '오디오 가이드 듣기';
+}
+function s2bMode(btn, mode){
+  s2bModeCur = mode;
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.toggle('on', b===btn));
+  document.getElementById('s2b-info').style.display = mode==='info' ? '' : 'none';
+  document.getElementById('s2b-list').style.display = mode==='list' ? '' : 'none';
+  document.getElementById('s2b-order').style.display = mode==='order' ? '' : 'none';
+}
+function s2bPick(i){ s2bIdx = i; s2bRender(); }
+function s2bStep(d){ s2bIdx = (s2bIdx + d + 8) % 8; s2bRender(); }
+function s2bPlay(){ const a = document.getElementById('s2baudio');
+  const on = a.classList.toggle('playing');
+  document.getElementById('s2baudiotext').textContent = on ? '재생 중… 0:07 / 1:42' : '오디오 가이드 듣기'; }
+/* 리스트 생성 */
+(function(){
+  const list = document.getElementById('s2b-list');
+  S2B.forEach((w,i)=>{
+    const r = document.createElement('div'); r.className='wrow';
+    r.innerHTML = `<img class="wthumb" src="img/art-photo.jpg" alt=""><div><div class="wt">F${i+1} · ${w[0]}</div><div class="wd">${w[1]}</div></div>`;
+    r.onclick = ()=>{ s2bIdx = i; s2bRender();
+      s2bMode(document.querySelectorAll('.mtab')[0], 'info'); };
+    list.appendChild(r);
+  });
+  const dots = document.getElementById('s2bdots');
+  for(let i=0;i<8;i++){ const d=document.createElement('span'); d.className='cdot'+(i===0?' on':''); dots.appendChild(d); }
+  const nx = document.createElement('span'); nx.className='carnext'; nx.textContent='›';
+  nx.onclick = ()=>s2bStep(1); dots.appendChild(nx);
+})();
 
 /* S4 */
 function s4size(btn, px){
